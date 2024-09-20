@@ -1,4 +1,4 @@
-package base_entities;
+package baseEntities;
 
 import configuration.ReadProperties;
 import org.openqa.selenium.By;
