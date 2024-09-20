@@ -1,5 +1,6 @@
 package servises;
 
+
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import models.Project;
@@ -8,10 +9,8 @@ import utils.endpoints.Endpoints;
 
 import static io.restassured.RestAssured.given;
 
-;
 
 public class ProjectService implements IProjectService {
-
 
     @Override
     public Project getProject(int id) {
@@ -26,7 +25,6 @@ public class ProjectService implements IProjectService {
                 .extract()
                 .as(Project.class, ObjectMapperType.GSON);
     }
-
 
     @Override
     public Response getProjects() {
@@ -80,7 +78,9 @@ public class ProjectService implements IProjectService {
         return given()
                 .body(project)
                 .log().body()
+                .log().all()
                 .pathParam("id", id)
+                .queryParam("force","true")
                 .when()
                 .put(Endpoints.UPDATE_PROJECT)
                 .then()

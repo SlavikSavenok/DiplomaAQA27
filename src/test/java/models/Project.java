@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 public class Project {
-    @EqualsAndHashCode.Exclude
-    private int id;
+   // @EqualsAndHashCode.Exclude
+   // private Integer id;
     private String name;
     @SerializedName("project_key")
     @JsonProperty("project_key")

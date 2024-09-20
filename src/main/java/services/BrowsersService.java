@@ -56,5 +56,4 @@ public class BrowsersService {
 
         return options;
     }
-
 }

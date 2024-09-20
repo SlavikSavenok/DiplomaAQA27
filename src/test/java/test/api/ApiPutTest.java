@@ -15,7 +15,7 @@ public class ApiPutTest extends BaseApiTest {
         updateProject.setProjectKey("UPD");
         updateProject.setDescription("update description");
 
-        Project actualProject = projectService.updateProject(updateProject, 31);
+        Project actualProject = projectService.updateProject(updateProject, 42);
         Assert.assertEquals(actualProject, updateProject);
     }
 }
