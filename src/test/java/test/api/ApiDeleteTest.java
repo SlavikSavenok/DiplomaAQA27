@@ -13,7 +13,7 @@ public class ApiDeleteTest extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API DELETE удаление проекта", description = "API DELETE удаление проекта")
     public void deleteProject() {
-        Response deleteProject = projectService.deleteProject(52);
+        Response deleteProject = projectService.deleteProject(54);
         deleteProject
                 .then()
                 .assertThat()

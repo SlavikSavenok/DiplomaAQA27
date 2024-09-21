@@ -47,4 +47,12 @@ public class ReadProperties {
     public static int timeout() {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
+
+    public static String key() {
+        return properties.getProperty("key");
+    }
+
+    public static String keyValue() {
+        return properties.getProperty("keyValue");
+    }
 }

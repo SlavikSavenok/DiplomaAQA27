@@ -25,7 +25,6 @@ public class BaseApiTest {
 
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
-                .header("X-Api-Key", "tny_7lWbJQPRdq4bqUkZzGRi8LT7xTtSHkiBOmuKCDTggqZqSXYy");
-
+                .header(ReadProperties.key(),ReadProperties.keyValue());
     }
 }
