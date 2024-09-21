@@ -70,7 +70,6 @@ public class ProjectService implements IProjectService {
                 .pathParam("id", id)
                 .when()
                 .delete(Endpoints.DELETE_PROJECT);
-
     }
 
     @Override
@@ -86,6 +85,19 @@ public class ProjectService implements IProjectService {
                 .then()
                 .log().body()
                 .extract().as(Project.class, ObjectMapperType.GSON);
+    }
+
+    @Override
+    public Response addInvalidNameProject(Project project) {
+        return given()
+                .body(project)
+                .log().body()
+                .when()
+                .post(Endpoints.ADD_PROJECT)
+                .then()
+                .log().all()
+                .extract()
+                .response();
     }
 }
 

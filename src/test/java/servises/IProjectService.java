@@ -10,6 +10,7 @@ public interface IProjectService {
     Project addProject(Project project);
     Response deleteProject(int id);
     Project updateProject(Project project, int id);
+    Response addInvalidNameProject(Project project);
 
 
 }

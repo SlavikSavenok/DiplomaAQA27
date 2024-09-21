@@ -14,8 +14,6 @@ import static org.hamcrest.Matchers.is;
 
 public class ApiGetTests extends BaseApiTest {
 
-
-
     @Description("API GET Тест на проверку имеющихся проектов")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET проверка имеющихся проектов", description = "API GET проверка имеющихся проектов")
@@ -29,9 +27,9 @@ public class ApiGetTests extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET проверка проекта по id", description = "API GET проверка проекта по id")
     public void getSingleProject() {
-        Project project = projectService.getProject(2);
+        Project project = projectService.getProject(47);
 
-        Assert.assertEquals(project.getName(), "testrailaqa27@mail.ru");
+        Assert.assertEquals(project.getName(), "project for review");
     }
 
     @Description("API GET проверка несуществующего проекта")
