@@ -1,4 +1,4 @@
-package base_entities;
+package baseEntities;
 
 import com.github.javafaker.Faker;
 import configuration.ReadProperties;
