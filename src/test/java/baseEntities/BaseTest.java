@@ -7,8 +7,11 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import pages.DashboardPage;
+import pages.TestCasePage;
 import services.BrowsersService;
 import services.WaitsService;
+import steps.UserStep;
 import utils.InvokedListener;
 
 import java.util.Random;
@@ -19,6 +22,10 @@ public class BaseTest {
     protected WaitsService waitsService;
     protected Faker faker;
     protected Random random;
+    protected UserStep userStep;
+
+    protected DashboardPage dashboardPage;
+    protected TestCasePage testCasePage;
 
     @BeforeMethod
     public void setup(ITestContext iTestContext) {
@@ -26,6 +33,11 @@ public class BaseTest {
         waitsService = new WaitsService(driver);
 
         iTestContext.setAttribute("webdriver", driver);
+
+        userStep = new UserStep(driver);
+        dashboardPage = new DashboardPage(driver);
+        testCasePage = new TestCasePage(driver);
+
 
         faker = new Faker();
         random = new Random();
