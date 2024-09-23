@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.DashboardPage;
+import pages.MyProfilePage;
 import pages.TestCasePage;
 import services.BrowsersService;
 import services.WaitsService;
@@ -26,6 +27,7 @@ public class BaseTest {
 
     protected DashboardPage dashboardPage;
     protected TestCasePage testCasePage;
+    protected MyProfilePage myProfilePage;
 
     @BeforeMethod
     public void setup(ITestContext iTestContext) {
@@ -37,6 +39,7 @@ public class BaseTest {
         userStep = new UserStep(driver);
         dashboardPage = new DashboardPage(driver);
         testCasePage = new TestCasePage(driver);
+        myProfilePage = new MyProfilePage(driver);
 
 
         faker = new Faker();

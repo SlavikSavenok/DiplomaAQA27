@@ -19,7 +19,7 @@ public class ApiJsonFileTest extends BaseApiTest {
     public void addProjectUsingJsonFileTest() {
 
         given()
-                .body(ApiJsonFileTest.class.getClassLoader().getResourceAsStream("dataForApiTest.json"))
+                .body(ApiJsonFileTest.class.getClassLoader().getResourceAsStream("data/dataForApiTest/dataForApiTest.json"))
                 .when()
                 .post(Endpoints.ADD_PROJECT)
                 .then()

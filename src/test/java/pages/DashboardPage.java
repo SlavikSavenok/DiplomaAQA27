@@ -33,4 +33,8 @@ public class DashboardPage extends BasePage {
     public void clickTestCasesButton() {
         getTestCasesButton().click();
     }
+
+    public void chooseSettingsDropDown(){
+        getUserDropDown().selectByText("Settings");
+    }
 }
