@@ -1,18 +1,11 @@
 package pages;
 
 import baseEntities.BasePage;
-import elements.Button;
-import elements.DropDown;
-import elements.Input;
+import elements.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TestCasePage extends BasePage {
-
-    private final By DROP_DOWN_ONE = By.xpath("//ul[@data-testid='list-list-box']");
-    private final By DROP_DOWN_TWO = By.xpath("//ul[@data-testid='dropdown-menu']");
-
-
     private final By TESTCASE_PAGE_LOCATOR = By.xpath("//h2[@data-testid='text-title']");
     private final By ADD_TESTCASE_BUTTON_LOCATOR = By.xpath("//button[@data-testid='button-add']");
     private final By ADD_TITLE_TESTCASE_INPUT_LOCATOR = By.xpath("//input[@data-testid='textbox-prop-title']");
@@ -22,9 +15,9 @@ public class TestCasePage extends BasePage {
     private final By ADD_TYPE_TESTCASE_DROPDOWN_LOCATOR = By.xpath("//div[@data-testid = 'selectbox-prop-testcase_type']//button[@data-testid='button-open' and @title = 'Open dropdown']");
     private final By ADD_PRECONDITION_TESTCASE_INPUT_LOCATOR = By.xpath("//div[@data-testid = 'section-precondition']//div[@data-testid = 'textbox-edit']");
     private final By SAVE_TESTCASE_BUTTON_LOCATOR = By.xpath("//button[@data-testid = 'button-save-entity']");
-    private final By TESTCASE_LOCATOR = By.xpath("//span[text() = 'TC-25']");
-    private final By TESTCASE_MORE_DROPDOWN_LOCATOR = By.xpath("//tr[@data-testid = 'row-25']//button[@data-testid = 'button-more']");
+    private final By TESTCASE_MORE_DROPDOWN_LOCATOR = By.xpath(".//button[@title='More…']");
     private final By DELETE_CONFIRMATION_TESTCASE_BUTTON_LOCATOR = By.xpath("//button[@data-testid = 'button-affirm']");
+    private final By TABLE_LOCATOR = By.tagName("table");
 
     public TestCasePage(WebDriver driver) {
         super(driver);
@@ -35,6 +28,7 @@ public class TestCasePage extends BasePage {
         return TESTCASE_PAGE_LOCATOR;
     }
 
+
     public Button getAddTestCasesButton() {
         return new Button(pageDriver, ADD_TESTCASE_BUTTON_LOCATOR);
     }
@@ -44,19 +38,19 @@ public class TestCasePage extends BasePage {
     }
 
     public DropDown getAddOwnerDropDown() {
-        return new DropDown(pageDriver, ADD_OWNER_TESTCASE_DROPDOWN_LOCATOR, DROP_DOWN_ONE);
+        return new DropDown(pageDriver, ADD_OWNER_TESTCASE_DROPDOWN_LOCATOR);
     }
 
     public DropDown getAddTemplateDropDown() {
-        return new DropDown(pageDriver, ADD_TEMPLATE_TESTCASE_DROPDOWN_LOCATOR, DROP_DOWN_ONE);
+        return new DropDown(pageDriver, ADD_TEMPLATE_TESTCASE_DROPDOWN_LOCATOR);
     }
 
     public DropDown getAddPriorityDropDown() {
-        return new DropDown(pageDriver, ADD_PRIORITY_TESTCASE_DROPDOWN_LOCATOR, DROP_DOWN_ONE);
+        return new DropDown(pageDriver, ADD_PRIORITY_TESTCASE_DROPDOWN_LOCATOR);
     }
 
     public DropDown getAddTypeDropDown() {
-        return new DropDown(pageDriver, ADD_TYPE_TESTCASE_DROPDOWN_LOCATOR, DROP_DOWN_ONE);
+        return new DropDown(pageDriver, ADD_TYPE_TESTCASE_DROPDOWN_LOCATOR);
     }
 
     public Input getAddPreconditionInput() {
@@ -67,16 +61,21 @@ public class TestCasePage extends BasePage {
         return new Button(pageDriver, SAVE_TESTCASE_BUTTON_LOCATOR);
     }
 
-    public DropDown getMoreDropDown() {
-        return new DropDown(pageDriver, TESTCASE_MORE_DROPDOWN_LOCATOR, DROP_DOWN_TWO);
+    public Table getTableElement() {
+        return new Table(pageDriver, TABLE_LOCATOR);
     }
 
-    public  Button getTestCase() {
-        return new Button(pageDriver, TESTCASE_LOCATOR);
+    public DropDown getMoreDropDown() {
+        getTableElement().getRow(0).click();
+        return new DropDown(pageDriver, getTableElement().getCell(0, 7).findElement(TESTCASE_MORE_DROPDOWN_LOCATOR));
     }
 
     public Button getDeleteTestCaseButton() {
         return new Button(pageDriver, DELETE_CONFIRMATION_TESTCASE_BUTTON_LOCATOR);
+    }
+
+    public UIElement getTitleCell() {
+        return new UIElement(pageDriver, getTableElement().getCell(0, 4));
     }
 
     public void clickAddTestCaseButton() {
@@ -95,9 +94,6 @@ public class TestCasePage extends BasePage {
         getSaveTestCaseButton().click();
     }
 
-    public void clickTestCase() {
-        getTestCase().click();
-    }
     public void clickDeleteTestCase() {
         getDeleteTestCaseButton().click();
     }

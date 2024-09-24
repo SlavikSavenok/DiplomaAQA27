@@ -39,7 +39,7 @@ public class DashboardPage extends BasePage {
     }
 
     public DropDown getUserDropDown() {
-        return new DropDown(pageDriver, USER_SETTINGS_DROPDOWN_LOCATOR, DROP_DOWN_TWO);
+        return new DropDown(pageDriver, USER_SETTINGS_DROPDOWN_LOCATOR);
     }
 
     public void clickTestCasesButton() {

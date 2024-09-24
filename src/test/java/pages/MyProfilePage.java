@@ -23,7 +23,7 @@ public class MyProfilePage extends BasePage {
     }
 
     public UIElement getImageAvatarLocator() {
-        return new  UIElement(pageDriver,IMAGE_AVATAR_LOCATOR);
+        return new UIElement(pageDriver, IMAGE_AVATAR_LOCATOR);
     }
 
     public Button getUploadAvatarButton() {

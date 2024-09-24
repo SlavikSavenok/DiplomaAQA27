@@ -23,7 +23,6 @@ public class PositiveTests extends BaseTest {
         String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/D", "D").replace("%5c", "/");
         fileUploadElement.sendKeys(pathToFile);
         myProfilePage.clickSaveAvatar();
-
         Assert.assertTrue(
                 myProfilePage.isAvatarFileDisplayedOnScreen());
     }

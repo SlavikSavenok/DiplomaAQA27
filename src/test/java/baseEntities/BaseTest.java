@@ -24,7 +24,6 @@ public class BaseTest {
     protected Faker faker;
     protected Random random;
     protected UserStep userStep;
-
     protected DashboardPage dashboardPage;
     protected TestCasePage testCasePage;
     protected MyProfilePage myProfilePage;

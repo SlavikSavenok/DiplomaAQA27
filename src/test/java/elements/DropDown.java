@@ -1,10 +1,8 @@
 package elements;
 
-import groovy.xml.StreamingDOMBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,21 +11,31 @@ public class DropDown {
     private UIElement parentElementList;
     private List<UIElement> elementList;
 
-    public DropDown(WebDriver driver, By by, By byTestCase ) {
+    public DropDown(WebDriver driver, By by) {
         this.actionElement = new UIElement(driver, by);
         actionElement.click();
-        this.parentElementList = new UIElement(driver, byTestCase);
-        ////ul[@data-testid='list-list-box']
+        this.parentElementList = new UIElement(driver, driver.findElement(By.xpath("//div[@id='portal-root']")));
         elementList = new ArrayList<>();
         for (WebElement element : parentElementList.findUIElements(By.tagName("li"))) {
             UIElement uiElement = new UIElement(driver, element);
             elementList.add(uiElement);
         }
-
     }
+
+    public DropDown(WebDriver driver, UIElement dropDownElement) {
+        this.actionElement = dropDownElement;
+        actionElement.click();
+        this.parentElementList = new UIElement(driver, driver.findElement(By.xpath("//div[@id='portal-root']")));
+        elementList = new ArrayList<>();
+        for (WebElement element : parentElementList.findUIElements(By.tagName("li"))) {
+            UIElement uiElement = new UIElement(driver, element);
+            elementList.add(uiElement);
+        }
+    }
+
     public void selectByIndex(int index) {
         if (index >= 0 && index < elementList.size()) {
-                elementList.get(index).click();
+            elementList.get(index).click();
         } else {
             throw new IndexOutOfBoundsException("Индекс больше размера коллекции");
         }
