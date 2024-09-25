@@ -11,7 +11,7 @@ public class Table {
     private UIElement tableElement;
     private List<UIElement> rows;
     private List<UIElement> cells;
-    private WebDriver driver;;
+    private WebDriver driver;
 
     public Table(WebDriver driver, By by) {
         this.driver = driver;

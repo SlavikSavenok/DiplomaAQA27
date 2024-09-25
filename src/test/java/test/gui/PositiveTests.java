@@ -1,9 +1,10 @@
 package test.gui;
 
-import baseEntities.BaseTest;
+import baseEntities.BaseGuiTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import models.TestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 
-public class PositiveTests extends BaseTest {
+public class PositiveTests extends BaseGuiTest {
 
     @Description("Тест на загрузку файла")
     @Severity(SeverityLevel.NORMAL)
@@ -48,5 +49,51 @@ public class PositiveTests extends BaseTest {
         Assert.assertEquals(loginPage.textInvalidPopUpMessageWindow(),
                 "Either your email address or your password is wrong. Please try again or recover your password.\n" +
                         "Create a new user, if you are not registered yet.");
+    }
+
+    @Description("Тест на создание сущности")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(testName = "Тест на создание сущности", description = "Тест на создание сущности")
+    public void addTestCase() {
+        TestCase testCaseBuilder = TestCase
+                .builder()
+                .title("AQA27Onl")
+                .owner("Diplom Diplom")
+                .template("Text")
+                .priority("Medium")
+                .type("Acceptance")
+                .precondition(faker.company().bs())
+                .steps(faker.company().bs())
+                .expectedResults(faker.company().bs())
+                .build();
+        userStep.successfulLogin();
+        dashboardPage.clickTestCasesButton();
+        testCasePage.addTestCase(testCaseBuilder);
+        Assert.assertEquals(waitsService.presenceOfElementLocated(By.xpath("//td//span[text() = 'AQA27Onl']")).getText(), testCaseBuilder.getTitle());
+        testCasePage.getMoreDropDown().selectByText("Delete");
+        testCasePage.clickDeleteTestCase();
+    }
+
+    @Description("Тест на удаление сущности")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(testName = "Тест на удаление сущности", description = "Тест на удаление сущности")
+    public void deleteTestCaseTest() {
+        TestCase testCaseBuilder = TestCase
+                .builder()
+                .title("TestCaseForDelete")
+                .owner("Diplom Diplom")
+                .template("Text")
+                .priority("Medium")
+                .type("Acceptance")
+                .precondition(faker.company().bs())
+                .steps(faker.company().bs())
+                .expectedResults(faker.company().bs())
+                .build();
+        userStep.successfulLogin();
+        dashboardPage.clickTestCasesButton();
+        testCasePage.addTestCase(testCaseBuilder);
+        testCasePage.getMoreDropDown().selectByText("Delete");
+        testCasePage.clickDeleteTestCase();
+        Assert.assertTrue(waitsService.presenceOfElementLocated(By.xpath("//*[text() = 'Create test cases']")).isDisplayed());
     }
 }
