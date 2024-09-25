@@ -11,7 +11,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.pageDriver = driver;
-        this.actions = new Actions(driver);
+
     }
 
     protected abstract By getPageIdentifier();

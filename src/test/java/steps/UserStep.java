@@ -24,4 +24,11 @@ public class UserStep extends BaseStep {
         loginPage.clickLogin();
     }
 
+    @Step(value = "Некорректный логин")
+    public void invalidLogin() {
+        loginPage.setEmailValue(ReadProperties.username());
+        loginPage.setPasswordValue("invalid@gmail.com");
+        loginPage.clickLogin();
+    }
+
 }
