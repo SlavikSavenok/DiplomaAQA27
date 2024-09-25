@@ -37,4 +37,16 @@ public class PositiveTests extends BaseTest {
         Assert.assertTrue(
                 dashboardPage.isFeedbackDialogWindowDisplayed());
     }
+
+    @Description("Тест на проверку всплывающего сообщения при невалидном логине")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "Тест на проверку всплывающего сообщения", description = "Тест на проверку всплывающего сообщения")
+    public void popUpMessageTest() {
+        userStep.invalidLogin();
+
+        Assert.assertTrue(loginPage.isPopUpMessageWindowDisplayed());
+        Assert.assertEquals(loginPage.textInvalidPopUpMessageWindow(),
+                "Either your email address or your password is wrong. Please try again or recover your password.\n" +
+                        "Create a new user, if you are not registered yet.");
+    }
 }
