@@ -19,7 +19,7 @@ import utils.InvokedListener;
 import java.util.Random;
 
 @Listeners(InvokedListener.class)
-public class BaseTest {
+public class BaseGuiTest {
     protected WebDriver driver;
     protected WaitsService waitsService;
     protected Faker faker;
