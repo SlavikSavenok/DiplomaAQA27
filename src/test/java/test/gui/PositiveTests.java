@@ -1,6 +1,7 @@
 package test.gui;
 
 import baseEntities.BaseGuiTest;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import data.StaticProvider;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -87,20 +88,15 @@ public class PositiveTests extends BaseGuiTest {
     }
 
 
-
     @Test(dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
-    public void boundaryValuesTest(String inputValue) {
+    public void boundaryValuesTest(String inputValue, boolean isValid) {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
         myProfilePage.writeDisplayName(inputValue);
-        myProfilePage.clickSaveButton();
-        myProfilePage.clickBackToTestinyButton();
 
-
-      /*  if (!dashboardPage.isPageOpened()) {
-            Assert.assertTrue();
-
-        }*/
-
+        if(isValid){
+            Assert.assertTrue(myProfilePage
+                    .isSaveButtonEnabledOnScreen());
+        }
     }
 }

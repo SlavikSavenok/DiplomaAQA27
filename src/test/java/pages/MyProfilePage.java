@@ -11,7 +11,7 @@ public class MyProfilePage extends BasePage {
 
     private final By PAGE_LOCATOR = By.xpath("//h3[text() = 'My profile']");
     private final By UPLOAD_AVATAR_BUTTON_LOCATOR = By.xpath("//div[text()='Upload avatar']");
-    private final By SAVE_AVATAR_BUTTON_LOCATOR = By.xpath("//div[text()='Save']");
+    private final By SAVE_BUTTON_LOCATOR = By.xpath("//*[@data-testid='button-save-entity']");
     private final By IMAGE_AVATAR_LOCATOR = By.xpath("//img[@alt='Avatar']");
     private final By DISPLAY_NAME_FIELD_LOCATOR = By.xpath("//input[@class='inputbox-basecomp']");
     private final By BACK_TO_TESTINY_BUTTON = By.xpath("//*[text()='Back to Testiny']");
@@ -46,12 +46,12 @@ public class MyProfilePage extends BasePage {
         return new Input(pageDriver, DISPLAY_NAME_FIELD_LOCATOR);
     }
 
-    public Button getSaveAvatarButton() {
-        return new Button(pageDriver, SAVE_AVATAR_BUTTON_LOCATOR);
+    public Button getSaveButton() {
+        return new Button(pageDriver, SAVE_BUTTON_LOCATOR);
     }
 
     public void clickSaveButton() {
-        getSaveAvatarButton().click();
+        getSaveButton().click();
     }
 
     public void writeDisplayName(String inputValue) {
@@ -66,8 +66,8 @@ public class MyProfilePage extends BasePage {
         }
     }
 
-    public boolean isUnsavedPopUpDisplayedOnScreen() {
-        if (getUnsavedDataPopUp().isDisplayed()) {
+    public boolean isSaveButtonEnabledOnScreen() {
+        if (getSaveButton().isEnabled()) {
             return true;
         } else {
             return false;
