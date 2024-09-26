@@ -96,7 +96,6 @@ public class PositiveTests extends BaseGuiTest {
         myProfilePage.clickSaveButton();
         myProfilePage.clickBackToTestinyButton();
 
-
       /*  if (!dashboardPage.isPageOpened()) {
             Assert.assertTrue();
 
