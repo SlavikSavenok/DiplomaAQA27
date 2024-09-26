@@ -16,6 +16,7 @@ public class DashboardPage extends BasePage {
     private final By USER_SETTINGS_DROPDOWN_LOCATOR = By.xpath("//button[@data-testid = 'button-account']");
     private final By FEEDBACK_BUTTON_LOCATOR = By.xpath("//button[@data-testid = 'button-feedback']");
     private final By FEEDBACK_DIALOG_WINDOW_LOCATOR = By.xpath("//div[@data-testid='section-modal-dialog:dialog']");
+    private final By NAME_CONTAINER_LOCATOR=By.xpath("//span[@class='shown-name-container']");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -24,6 +25,10 @@ public class DashboardPage extends BasePage {
     @Override
     protected By getPageIdentifier() {
         return DASHBOARD_PAGE_LOCATOR;
+    }
+
+    public UIElement getContainerName(){
+        return new UIElement(pageDriver,NAME_CONTAINER_LOCATOR);
     }
 
     public WebElement getFeedbackDialogWindow() {

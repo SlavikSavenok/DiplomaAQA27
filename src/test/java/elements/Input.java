@@ -27,4 +27,7 @@ public class Input {
     public String getText() {
         return uiElement.getText();
     }
+    public String getValue() {
+        return uiElement.getAttribute("value");
+    }
 }
