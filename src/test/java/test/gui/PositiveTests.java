@@ -89,7 +89,7 @@ public class PositiveTests extends BaseGuiTest {
 
 
     @Test(dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
-    public void boundaryValuesTest(String inputValue) throws InterruptedException {
+    public void boundaryValuesTest(String inputValue) {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
         myProfilePage.writeDisplayName(inputValue);
@@ -102,7 +102,5 @@ public class PositiveTests extends BaseGuiTest {
 
         }*/
 
-
-        Thread.sleep(3000);
     }
 }

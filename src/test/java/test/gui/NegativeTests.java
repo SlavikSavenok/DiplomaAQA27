@@ -31,7 +31,7 @@ public class NegativeTests extends BaseGuiTest {
     }
 
     @Test
-    public void dataExceedsTheLimitTest() throws InterruptedException {
+    public void dataExceedsTheLimitTest() {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
         myProfilePage.writeDisplayName(new String(new char[1000]).replace('\0', '1'));
@@ -43,6 +43,5 @@ public class NegativeTests extends BaseGuiTest {
                 "Discard\n" +
                 "Cancel");
 
-        Thread.sleep(3000);
     }
 }
