@@ -35,13 +35,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run Smoke Test
-        if: "github.event.inputs.deployment_target == 'smoke_test'"
-        run: mvn clean -DsuiteFileName=smoke.xml test
-
-      - name: Run Regression Test
-        if: "github.event.inputs.deployment_target == 'regression_test'"
-        run: mvn clean -DsuiteFileName=regression.xml test
+      - name: Run Test
+        run: mvn clean test
 
       - name: Load test report history
         uses: actions/checkout@v3
