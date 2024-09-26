@@ -1,6 +1,7 @@
 package test.gui;
 
 import baseEntities.BaseGuiTest;
+import data.StaticProvider;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -23,7 +24,7 @@ public class PositiveTests extends BaseGuiTest {
         WebElement fileUploadElement = waitsService.presenceOfElementLocated(By.xpath("//input[@style='display: none;']"));
         String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/D", "D").replace("%5c", "/");
         fileUploadElement.sendKeys(pathToFile);
-        myProfilePage.clickSaveAvatar();
+        myProfilePage.clickSaveButton();
         Assert.assertTrue(
                 myProfilePage.isAvatarFileDisplayedOnScreen());
     }
@@ -37,18 +38,6 @@ public class PositiveTests extends BaseGuiTest {
 
         Assert.assertTrue(
                 dashboardPage.isFeedbackDialogWindowDisplayed());
-    }
-
-    @Description("Тест на проверку всплывающего сообщения при невалидном логине")
-    @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Тест на проверку всплывающего сообщения", description = "Тест на проверку всплывающего сообщения")
-    public void popUpMessageTest() {
-        userStep.invalidLogin();
-
-        Assert.assertTrue(loginPage.isPopUpMessageWindowDisplayed());
-        Assert.assertEquals(loginPage.textInvalidPopUpMessageWindow(),
-                "Either your email address or your password is wrong. Please try again or recover your password.\n" +
-                        "Create a new user, if you are not registered yet.");
     }
 
     @Description("Тест на создание сущности")
@@ -95,5 +84,25 @@ public class PositiveTests extends BaseGuiTest {
         testCasePage.getMoreDropDown().selectByText("Delete");
         testCasePage.clickDeleteTestCase();
         Assert.assertTrue(waitsService.presenceOfElementLocated(By.xpath("//*[text() = 'Create test cases']")).isDisplayed());
+    }
+
+
+
+    @Test(dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
+    public void boundaryValuesTest(String inputValue) throws InterruptedException {
+        userStep.successfulLogin();
+        dashboardPage.chooseSettingsDropDown();
+        myProfilePage.writeDisplayName(inputValue);
+        myProfilePage.clickSaveButton();
+        myProfilePage.clickBackToTestinyButton();
+
+
+      /*  if (!dashboardPage.isPageOpened()) {
+            Assert.assertTrue();
+
+        }*/
+
+
+        Thread.sleep(3000);
     }
 }

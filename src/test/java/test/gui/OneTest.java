@@ -2,6 +2,7 @@ package test.gui;
 
 import baseEntities.BaseGuiTest;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import data.StaticProvider;
 import elements.UIElement;
 import models.TestCase;
 import org.openqa.selenium.By;
@@ -51,5 +52,6 @@ public class OneTest extends BaseGuiTest {
         testCasePage.clickDeleteTestCase();
         Assert.assertTrue(waitsService.presenceOfElementLocated(By.xpath("//*[text() = 'Create test cases']")).isDisplayed());
     }
+
 }
 
