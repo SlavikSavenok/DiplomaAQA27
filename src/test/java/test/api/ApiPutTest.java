@@ -12,15 +12,15 @@ import org.testng.annotations.Test;
 public class ApiPutTest extends BaseApiTest {
 
     @Description("API Post Тест на проверку обновления проекта")
-    @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post проверка обновления проекта", description = "API Post проверка обновления проекта")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(testName = "API Post проверка обновления проекта", description = "Тест на проверку обновления проекта")
     public void updateProject() {
         Project updateProject = new Project();
         updateProject.setName("update name");
         updateProject.setProjectKey("UPD");
         updateProject.setDescription("update description");
 
-        Project actualProject = projectService.updateProject(updateProject, 82);
+        Project actualProject = projectService.updateProject(updateProject, 135);
         Assert.assertEquals(actualProject, updateProject);
     }
 }
