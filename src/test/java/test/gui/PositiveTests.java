@@ -32,7 +32,7 @@ public class PositiveTests extends BaseGuiTest {
     @Description("Тест на создание сущности")
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "Тест на создание сущности", description = "Тест на создание сущности")
-    public void addTestCase() {
+    public void addTestCaseTest() {
         TestCase testCaseBuilder = TestCase
                 .builder()
                 .title("AQA27Onl")
@@ -100,6 +100,4 @@ public class PositiveTests extends BaseGuiTest {
         Assert.assertTrue(
                 myProfilePage.isAvatarFileDisplayedOnScreen());
     }
-
-
 }

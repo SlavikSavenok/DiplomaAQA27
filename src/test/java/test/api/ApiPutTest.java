@@ -14,7 +14,7 @@ public class ApiPutTest extends BaseApiTest {
     @Description("API Post Тест на проверку обновления проекта")
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "API Post проверка обновления проекта", description = "Тест на проверку обновления проекта")
-    public void updateProject() {
+    public void updateProjectTest() {
         Project updateProject = new Project();
         updateProject.setName("update name");
         updateProject.setProjectKey("UPD");
