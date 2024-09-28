@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 public class ApiDeleteTest extends BaseApiTest {
 
     @Description("API DELETE тест на проверку удаления проекта")
-    @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API DELETE удаление проекта", description = "API DELETE удаление проекта")
-    public void deleteProject() {
-        Response deleteProject = projectService.deleteProject(81);
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(testName = "API DELETE удаление проекта", description = "Тест на проверку удаления проекта")
+    public void deleteProjectTest() {
+        Response deleteProject = projectService.deleteProject(98);
         deleteProject
                 .then()
                 .assertThat()

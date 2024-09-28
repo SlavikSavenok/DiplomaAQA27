@@ -15,39 +15,28 @@ import java.io.File;
 
 public class PositiveTests extends BaseGuiTest {
 
-    @Description("Тест на загрузку файла")
+    @Description("Тест на проверку поля для ввода на граничные значения")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Тест на загрузку файла", description = "Тест на загрузку файла")
-    public void fileUploadTest() {
+    @Test(testName = "Проверка граничных значений", description = "Проверка граничных значений",
+            dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
+    public void boundaryValuesTest(String inputValue, boolean isValid) {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
-        WebElement fileUploadElement = waitsService.presenceOfElementLocated(By.xpath("//input[@style='display: none;']"));
-        String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/D", "D").replace("%5c", "/");
-        fileUploadElement.sendKeys(pathToFile);
-        myProfilePage.clickSaveButton();
-        Assert.assertTrue(
-                myProfilePage.isAvatarFileDisplayedOnScreen());
-    }
+        myProfilePage.writeDisplayName(inputValue);
 
-    @Description("Тест на проверку отображения диалогового окна")
-    @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Отображение диалогового окна", description = "Отображение диалогового окна")
-    public void dialogWindowTest() {
-        userStep.successfulLogin();
-        dashboardPage.clickFeedbackButton();
+        Assert.assertEquals(myProfilePage
+                .isSaveButtonEnabledOnScreen(), isValid);
 
-        Assert.assertTrue(
-                dashboardPage.isFeedbackDialogWindowDisplayed());
     }
 
     @Description("Тест на создание сущности")
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "Тест на создание сущности", description = "Тест на создание сущности")
-    public void addTestCase() {
+    public void addTestCaseTest() {
         TestCase testCaseBuilder = TestCase
                 .builder()
                 .title("AQA27Onl")
-                .owner("Diplom Diplom")
+                .owner("Owner")
                 .template("Text")
                 .priority("Medium")
                 .type("Acceptance")
@@ -70,7 +59,7 @@ public class PositiveTests extends BaseGuiTest {
         TestCase testCaseBuilder = TestCase
                 .builder()
                 .title("TestCaseForDelete")
-                .owner("Diplom Diplom")
+                .owner("Owner")
                 .template("Text")
                 .priority("Medium")
                 .type("Acceptance")
@@ -86,21 +75,29 @@ public class PositiveTests extends BaseGuiTest {
         Assert.assertTrue(waitsService.presenceOfElementLocated(By.xpath("//*[text() = 'Create test cases']")).isDisplayed());
     }
 
+    @Description("Тест на проверку отображения диалогового окна")
+    @Severity(SeverityLevel.MINOR)
+    @Test(testName = "Отображение диалогового окна", description = "Тест на проверку отображения диалогового окна")
+    public void dialogWindowTest() {
+        userStep.successfulLogin();
+        dashboardPage.clickFeedbackButton();
 
+        Assert.assertTrue(
+                dashboardPage.isFeedbackDialogWindowDisplayed());
+    }
 
-    @Test(dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
-    public void boundaryValuesTest(String inputValue) {
+    @Description("Тест на загрузку файла")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "Тест на загрузку файла", description = "Тест на загрузку файла")
+    public void fileUploadTest() {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
-        myProfilePage.writeDisplayName(inputValue);
+        WebElement fileUploadElement = waitsService.presenceOfElementLocated(By.xpath("//input[@style='display: none;']"));
+        String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/D", "D").replace("%5c", "/");
+        fileUploadElement.sendKeys(pathToFile);
+        System.out.println(pathToFile);
         myProfilePage.clickSaveButton();
-        myProfilePage.clickBackToTestinyButton();
-
-
-      /*  if (!dashboardPage.isPageOpened()) {
-            Assert.assertTrue();
-
-        }*/
-
+        Assert.assertTrue(
+                myProfilePage.isAvatarFileDisplayedOnScreen());
     }
 }

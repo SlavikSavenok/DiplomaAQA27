@@ -16,8 +16,8 @@ public class ApiPostTest extends BaseApiTest {
 
     @Description("API Post Тест на проверку создания проекта")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "API Post проверка создания проекта", description = "API Post проверка создания проекта")
-    public void addProject() {
+    @Test(testName = "API Post проверка создания проекта")
+    public void addProjectTest() {
         Project expectedProject = new Project();
         expectedProject.setName("API new project");
         expectedProject.setProjectKey("KEY");
@@ -29,7 +29,8 @@ public class ApiPostTest extends BaseApiTest {
 
     @Description("API Post Тест на проверку создания проекта с некоректным количеством символов в имени")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post проверка создания проекта с некоректным количеством символов в имени", description = "API Post проверка создания проекта с некоректным количеством символов в имени")
+    @Test(testName = "API Post проверка создания проекта с некоректным количеством символов в имени",
+            description = "Тест на проверку создания проекта с некоректным количеством символов в имени")
     public void addInvalidNameProject() {
         Project expectedProject = new Project();
         expectedProject.setName("AP");
@@ -38,8 +39,8 @@ public class ApiPostTest extends BaseApiTest {
                 .then()
                 .assertThat()
                 .statusCode(400)
-                .body("code",is("API_INVALID_INPUT_DATA"))
-                .body("message",is("Input data was rejected:" +
+                .body("code", is("API_INVALID_INPUT_DATA"))
+                .body("message", is("Input data was rejected:" +
                         " Validation errors: An instance of Project has failed the validation:" +
                         "\n - property name has failed the following constraints:" +
                         " Trimmed name must be longer than or equal to 3 characters" +
