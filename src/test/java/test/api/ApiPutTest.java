@@ -15,12 +15,13 @@ public class ApiPutTest extends BaseApiTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "API Post проверка обновления проекта", description = "Тест на проверку обновления проекта")
     public void updateProjectTest() {
+        int updateProjectID = 176;
         Project updateProject = new Project();
         updateProject.setName("update name");
         updateProject.setProjectKey("UPD");
         updateProject.setDescription("update description");
 
-        Project actualProject = projectService.updateProject(updateProject, 176);
+        Project actualProject = projectService.updateProject(updateProject, updateProjectID);
         Assert.assertEquals(actualProject, updateProject);
     }
 }
