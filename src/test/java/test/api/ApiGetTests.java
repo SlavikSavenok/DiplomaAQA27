@@ -36,14 +36,15 @@ public class ApiGetTests extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET проверка несуществующего проекта", description = "API GET проверка несуществующего проекта")
     public void getInvalidProjectTest() {
-        Response response = projectService.getInvalidProject(1000);
+        int nonExistentID = 1000;
+        Response response = projectService.getInvalidProject(nonExistentID);
         response
                 .then()
                 .assertThat()
                 .statusCode(404)
                 .body("type", is("ApiError"))
                 .body("code", is("API_DATA_NOT_FOUND"))
-                .body("message", is("The entity with id 1000 was not found."));
+                .body("message", is("The entity with id " + nonExistentID + " was not found."));
 
         System.out.println("Статус код = " + response.getStatusCode());
     }
