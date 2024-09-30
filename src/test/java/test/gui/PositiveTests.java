@@ -93,7 +93,7 @@ public class PositiveTests extends BaseGuiTest {
         userStep.successfulLogin();
         dashboardPage.chooseSettingsDropDown();
         WebElement fileUploadElement = waitsService.presenceOfElementLocated(By.xpath("//input[@style='display: none;']"));
-        String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/D", "D").replace("%5c", "/");
+        String pathToFile = PositiveTests.class.getClassLoader().getResource("data" + File.separator + "dataForFileUploadTest" + File.separator + "profileAvatar.jpg").getPath().replace("/F", "F").replace("%5c", "/");
         fileUploadElement.sendKeys(pathToFile);
         System.out.println(pathToFile);
         myProfilePage.clickSaveButton();
