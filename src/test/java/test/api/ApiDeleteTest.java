@@ -5,6 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
+import models.Project;
 import org.testng.annotations.Test;
 
 public class ApiDeleteTest extends BaseApiTest {
@@ -13,7 +14,7 @@ public class ApiDeleteTest extends BaseApiTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "API DELETE удаление проекта", description = "Тест на проверку удаления проекта")
     public void deleteProjectTest() {
-        Response deleteProject = projectService.deleteProject(98);
+        Response deleteProject = projectService.deleteProject(204);
         deleteProject
                 .then()
                 .assertThat()

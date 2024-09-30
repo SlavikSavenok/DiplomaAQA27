@@ -27,7 +27,7 @@ public class ApiGetTests extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET проверка проекта по id", description = "API GET проверка проекта по id")
     public void getSingleProject() {
-        Project project = projectService.getProject(47);
+        Project project = projectService.getProject(177);
 
         Assert.assertEquals(project.getName(), "project for review");
     }
