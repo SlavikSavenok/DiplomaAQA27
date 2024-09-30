@@ -15,7 +15,6 @@ public class StaticProvider {
                 {MAXIMUM_PERMISSIBLE_VALUE_MINUS_ONE, true},
                 {MAXIMUM_PERMISSIBLE_VALUE, true},
                 {MAXIMUM_PERMISSIBLE_VALUE_PLUS_ONE, false},
-                {"Owner", false}
         };
     }
 }
