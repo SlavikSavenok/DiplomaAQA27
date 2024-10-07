@@ -25,6 +25,6 @@ public class BaseApiTest {
 
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
-                .header(ReadProperties.key(),ReadProperties.keyValue());
+                .header(ReadProperties.key(), ReadProperties.keyValue());
     }
 }
